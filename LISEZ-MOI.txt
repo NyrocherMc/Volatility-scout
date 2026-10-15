@@ -1,0 +1,27 @@
+VOLATILITY SCOUT — PROTOTYPE DE TEST DERIV
+
+Fichier : index.html
+
+IMPORTANT
+- Prototype non audité, fourni pour un test prudent en compte démo uniquement.
+- Ne jamais utiliser un jeton API de compte réel.
+- Le jeton est conservé uniquement en mémoire dans l'onglet et n'est pas enregistré par ce code.
+- Le robot vérifie que l'identifiant autorisé commence par VRTC avant de permettre la suite.
+- Le trading automatique est décoché par défaut.
+- Les contrats Rise/Fall de 15 secondes ne reproduisent pas les ordres MT5, les stops en points, le trailing stop ni les ordres de récupération.
+
+LANCEMENT
+1. Télécharger et extraire le ZIP, puis ouvrir index.html dans un navigateur moderne.
+2. Créer dans Deriv un jeton API dédié au compte de démonstration avec permission de trading. Ne jamais coller le jeton dans un message.
+3. Entrer l'App ID legacy, le jeton démo et cocher la confirmation de compte démo.
+4. Connecter. Le robot scanne les indices, affiche un classement et sélectionne le meilleur score observé.
+5. Laisser « Autoriser les contrats automatiques » décoché pour observer d'abord. Pour un test automatique, cocher la case uniquement sur le compte démo.
+6. Cliquer Démarrer le scanner. Cliquer Arrêter pour stopper les nouvelles entrées.
+
+LIMITES TECHNIQUES
+- Le classement est un score heuristique sur un historique court de ticks, pas une reproduction exacte de l'ATR MT5.
+- Les symboles sont filtrés par nom « Volatility » et interrogés par lots logiques, mais la sélection dépend des marchés retournés par l'API.
+- Le signal utilise la dernière bougie clôturée de 15 secondes: haussière = CALL, baissière = PUT.
+- Un seul contrat à la fois, mise plafonnée à 5 USD, pause entre entrées et limite de résultat de session.
+- La disponibilité des contrats 15 secondes varie selon le symbole et l'API. Si une proposition est refusée, le journal affiche l'erreur.
+- Aucune rentabilité n'est garantie. Ce prototype doit être testé et corrigé avant tout usage autre que démo.
